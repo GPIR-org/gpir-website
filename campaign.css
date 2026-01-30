@@ -1,0 +1,438 @@
+/* ===============================
+   GLOBAL RESET
+   =============================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f6f8;
+    color: #333333;
+}
+
+/* ===============================
+   HEADER / NAVBAR
+   =============================== */
+
+/* Header */
+.nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #2b6cb0, #68a0cf);
+    color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    /* vertically centers img + text */
+    gap: 8px;
+    /* space between the icon and text */
+}
+
+.logo a {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    /* make the image + text align in a row */
+    align-items: center;
+    /* vertically center them */
+    gap: 8px;
+}
+
+.logo img {
+    width: 3rem;
+    height: 3rem;
+    object-fit: contain;
+    display: block;
+
+}
+
+.nav-links {
+    display: flex;
+    gap: 3rem;
+    margin-left: 50px;
+    justify-content: flex-start;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ===============================
+   HERO / SLIDESHOW
+   =============================== */
+
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    background-color: #000;
+    /* fallback if images fail to load */
+}
+
+.slideshow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    /* slides are behind text */
+}
+
+.slideshow .slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    animation: slideAnim 15s infinite;
+    filter: brightness(1.2);
+}
+
+.slideshow .slide:first-child {
+    opacity: 1;
+    /* ensures first slide is visible initially */
+}
+
+.hero-title {
+    position: relative;
+    /* brings it above the slides */
+    z-index: 1;
+    /* above slides */
+    color: white;
+    font-size: 3rem;
+    text-transform: uppercase;
+    padding: 0 10px;
+    border-radius: 8px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    /* optional for better readability */
+}
+
+.slideshow .slide:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.slideshow .slide:nth-child(2) {
+    animation-delay: 5s;
+}
+
+.slideshow .slide:nth-child(3) {
+    animation-delay: 10s;
+}
+
+@keyframes slideAnim {
+    0% {
+        opacity: 0;
+    }
+
+    8% {
+        opacity: 1;
+    }
+
+    30% {
+        opacity: 1;
+    }
+
+    38% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+/* dark overlay for readability */
+.hero-section::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 2;
+}
+
+.hero-title {
+    position: relative;
+    z-index: 3;
+    font-size: 3rem;
+    text-transform: uppercase;
+    color: #ffffff;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.section-container {
+    display: flex;
+    justify-content: center;
+    margin: 60px 0 30px;
+}
+
+.section-title {
+    font-size: 2.4rem;
+    /* Bigger title */
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 1px;
+    color: #222;
+    position: relative;
+}
+
+/* Optional decorative underline */
+.section-title::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: #1e6bd6;
+    margin: 12px auto 0;
+    border-radius: 2px;
+}
+
+.section-title {
+    animation: fadeUp 0.6s ease-out;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.campaign-section {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Card */
+.campaign-card {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    max-width: 1450px;
+    background: #fff;
+    border-radius: 16px;
+    margin: 0 auto;
+    padding: 20px;
+    text-decoration: none;
+    color: #333333;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Hover pop effect */
+.campaign-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Image */
+.campaign-card img {
+    width: 180px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Text area */
+.campaign-details h3 {
+    margin: 0 0 8px;
+}
+
+.campaign-details p {
+    margin: 0;
+    color: #333333;
+    line-height: 1.4;
+}
+
+.read-more {
+    display: inline-block;
+    margin-top: 10px;
+    color: #2b6cb0;
+    font-weight: bold;
+}
+
+/* ===============================
+   FOOTER
+   =============================== */
+
+.site-footer {
+    background-color: #1f3b56;
+    padding: 40px 20px;
+    margin-top: 40px;
+    color: #e1e8f0;
+}
+
+.footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1.5fr 1.5fr 1.3fr;
+    gap: 32px;
+}
+
+.footer-col h3,
+.footer-col h4 {
+    color: #ffffff;
+    margin-bottom: 12px;
+}
+
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col a {
+    color: #68a0cf;
+    text-decoration: none;
+}
+
+.footer-col a:hover {
+    color: #f2a654;
+    text-decoration: underline;
+}
+
+.footer-brand {
+    border-left: 1px solid #dedac5;
+    padding-left: 20px;
+}
+
+.footer-logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #5c999b;
+}
+
+.footer-social {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.footer-social svg {
+    width: 22px;
+    height: 22px;
+    fill: #e0ddc8;
+}
+
+/*The section below contains code for the responsiveness of the campaigns webpage on different devices*/
+
+/* ===============================
+   MOBILE FIXES – CAMPAIGNS
+   =============================== */
+
+/* -------- NAVBAR -------- */
+@media (max-width: 768px) {
+    .nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem;
+        gap: 10px;
+    }
+
+    .nav-links {
+        margin-left: 0;
+        gap: 1rem;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .nav-links a {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.95rem;
+    }
+}
+
+/* -------- HERO SECTION -------- */
+@media (max-width: 768px) {
+    .hero-section {
+        height: 70vh;
+    }
+
+    .hero-title {
+        font-size: 1.8rem;
+        line-height: 1.3;
+    }
+}
+
+/* -------- CAMPAIGN CARDS -------- */
+@media (max-width: 900px) {
+    .campaign-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        padding: 18px;
+    }
+
+    .campaign-card img {
+        width: 100%;
+        height: 200px;
+    }
+
+    .campaign-section {
+        padding: 0 15px;
+    }
+}
+
+/* -------- SMALL PHONES -------- */
+@media (max-width: 480px) {
+    .campaign-card img {
+        height: 170px;
+    }
+
+    .campaign-details h3 {
+        font-size: 1.1rem;
+    }
+
+    .campaign-details p {
+        font-size: 0.95rem;
+    }
+}
+
+/* -------- FOOTER -------- */
+@media (max-width: 768px) {
+    .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        text-align: center;
+    }
+
+    .footer-brand {
+        border-left: none;
+        padding-left: 0;
+    }
+}

@@ -1,0 +1,160 @@
+/* ================= Container ================= */
+.container {
+    max-width: 900px;
+    /* keep content centered */
+    margin: 50px auto;
+    /* top-bottom spacing, centered horizontally */
+    padding: 0 20px;
+    /* small padding on mobile */
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333333;
+}
+
+/* ================= Title ================= */
+.container h1 {
+    font-size: 2.5rem;
+    /* big, prominent title */
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #2b6cb0;
+    /* deep blue title */
+}
+
+/* ================= Images ================= */
+.container img {
+    display: block;
+    margin: 0 auto 30px;
+    /* center image, space below */
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    /* smooth rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    /* subtle shadow */
+}
+
+/* ================= Paragraphs ================= */
+.container p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    color: #333333;
+}
+
+/* ================= Subheadings ================= */
+.container h3 {
+    font-size: 1.5rem;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    color: #2b6cb0;
+    /* match button / accent color */
+    border-bottom: 2px solid #e0e0e0;
+    /* subtle underline effect */
+    padding-bottom: 5px;
+}
+
+/* ================= Lists ================= */
+.container ul {
+    list-style-type: disc;
+    padding-left: 40px;
+    margin-bottom: 20px;
+}
+
+.container ul li {
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+}
+
+.return-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #2b6cb0;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.return-btn:hover {
+    background-color: #1552a3;
+}
+
+.images-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.images-section img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 10px;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.images-section img:hover {
+    transform: scale(1.05);
+}
+
+/* ================= Download Button ================= */
+.download-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 20px;
+    background: #2b6cb0;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.download-btn:hover {
+    background: #1552a3;
+    transform: translateY(-2px);
+    /* subtle hover lift */
+}
+
+/* ================= Responsive tweaks ================= */
+@media (max-width: 600px) {
+    .container h1 {
+        font-size: 2rem;
+    }
+
+    .container h3 {
+        font-size: 1.3rem;
+    }
+
+    .container p,
+    .container ul li {
+        font-size: 1rem;
+    }
+}
+
+/*The css for the video media is underneath this part of the styling code*/
+.media-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.media-section img,
+.media-section video {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 10px;
+    object-fit: cover;
+    transition: transform 0.3s;
+    vertical-align: top;
+}
+
+.media-section img:hover,
+.media-section video:hover {
+    transform: scale(1.05);
+}

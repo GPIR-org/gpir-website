@@ -1,0 +1,674 @@
+/* ===============================
+   GLOBAL RESET
+   =============================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f6f8;
+    color: #333333;
+}
+
+/* ===============================
+   HEADER / NAVBAR
+   =============================== */
+
+/* Header */
+.nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #2b6cb0, #68a0cf);
+    color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    /* vertically centers img + text */
+    gap: 8px;
+    /* space between the icon and text */
+}
+
+.logo a {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    /* make the image + text align in a row */
+    align-items: center;
+    /* vertically center them */
+    gap: 8px;
+}
+
+.logo img {
+    width: 3rem;
+    height: 3rem;
+    object-fit: contain;
+    display: block;
+
+}
+
+.nav-links {
+    display: flex;
+    gap: 3rem;
+    margin-left: 50px;
+    justify-content: flex-start;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ===============================
+   HERO / SLIDESHOW
+   =============================== */
+
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    background-color: #000;
+    /* fallback if images fail to load */
+}
+
+.slideshow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    /* slides are behind text */
+}
+
+.slideshow .slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    animation: slideAnim 15s infinite;
+    filter: brightness(1.2);
+}
+
+.slideshow .slide:first-child {
+    opacity: 1;
+    /* ensures first slide is visible initially */
+}
+
+.hero-title {
+    position: relative;
+    /* brings it above the slides */
+    z-index: 1;
+    /* above slides */
+    color: white;
+    font-size: 3rem;
+    text-transform: uppercase;
+    padding: 0 10px;
+    border-radius: 8px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    /* optional for better readability */
+}
+
+.slideshow .slide:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.slideshow .slide:nth-child(2) {
+    animation-delay: 5s;
+}
+
+.slideshow .slide:nth-child(3) {
+    animation-delay: 10s;
+}
+
+@keyframes slideAnim {
+    0% {
+        opacity: 0;
+    }
+
+    8% {
+        opacity: 1;
+    }
+
+    30% {
+        opacity: 1;
+    }
+
+    38% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+/* dark overlay for readability */
+.hero-section::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 2;
+}
+
+.hero-title {
+    position: relative;
+    z-index: 3;
+    font-size: 3rem;
+    text-transform: uppercase;
+    color: #ffffff;
+    text-align: center;
+    padding: 0 20px;
+}
+
+/* ===============================
+   FADE-IN ANIMATION (ON SCROLL)
+   =============================== */
+
+.intro-section,
+.quick-access-section,
+#services-section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===============================
+   INTRO SECTION
+   =============================== */
+
+.intro-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    margin: 60px auto;
+    width: 90%;
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 40px 50px;
+}
+
+.intro-section p {
+    max-width: 700px;
+    font-size: 1rem;
+    color: #555;
+}
+
+.intro-section img {
+    max-width: 500px;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* ===============================
+   QUICK ACCESS CARDS
+   =============================== */
+
+.quick-access-section {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 40px 20px;
+}
+
+.card {
+    background: #fff;
+    min-height: 280px;
+    width: 100%;
+    max-width: 360px;
+    border-radius: 16px;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    text-decoration: none;
+    color: #333333;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+}
+
+.card p {
+    font-weight: 600;
+    padding: 16px;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* ===============================
+           SERVICES CAROUSEL
+=============================== */
+#services-section {
+    margin-top: 60px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+#services-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.ht-carousel {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1100px;
+    margin: 0 auto 60px;
+    gap: 10px;
+}
+
+.ht-window {
+    overflow: hidden;
+    width: 100%;
+}
+
+.ht-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    will-change: transform;
+    flex-wrap: nowrap;
+}
+
+.services-card {
+    flex: 0 0 100%;
+    max-width: 100%;
+    background: #fff;
+    margin-right: 10px;
+    border-radius: 10px;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    padding: 15px;
+    height: 220px;
+}
+
+.services-card img {
+    width: 25%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+    display: block;
+}
+
+.story-text {
+    padding: 16px;
+    width: 95%;
+    height: 100%
+}
+
+.story-text h3 {
+    color: #2b6cb0;
+    margin-bottom: 8px;
+}
+
+.story-text p {
+    color: #444;
+}
+
+.ht-arrow {
+    border: none;
+    background: #f2a654;
+    color: #e1e8f0;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    font-size: 22px;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+    display: grid;
+    place-items: center;
+    z-index: 10;
+}
+
+.ht-arrow:hover {
+    background: #f39c12;
+    transform: translateY(-2px);
+}
+
+.ht-arrow:disabled {
+    opacity: 0.4;
+    cursor: default;
+}
+
+/* Responsive: stack vertically on small screens */
+@media (max-width: 800px) {
+    .services-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .services-card img,
+    .story-text {
+        width: 100%;
+    }
+}
+
+
+/* ===============================
+   FOOTER
+   =============================== */
+
+.site-footer {
+    background-color: #1f3b56;
+    padding: 40px 20px;
+    margin-top: 40px;
+    color: #e1e8f0;
+}
+
+.footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1.5fr 1.5fr 1.3fr;
+    gap: 32px;
+}
+
+.footer-col h3,
+.footer-col h4 {
+    color: #ffffff;
+    margin-bottom: 12px;
+}
+
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col a {
+    color: #68a0cf;
+    text-decoration: none;
+}
+
+.footer-col a:hover {
+    color: #f2a654;
+    text-decoration: underline;
+}
+
+.footer-brand {
+    border-left: 1px solid #dedac5;
+    padding-left: 20px;
+}
+
+.footer-logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #5c999b;
+}
+
+.footer-social {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.footer-social svg {
+    width: 22px;
+    height: 22px;
+    fill: #e0ddc8;
+}
+
+/* ===============================
+   RESPONSIVE
+   =============================== */
+
+@media (max-width: 900px) {
+    .intro-section {
+        flex-direction: column;
+        padding: 30px;
+    }
+
+    .footer-inner {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .footer-brand {
+        border-left: none;
+        padding-left: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .services-card {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-inner {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===============================
+   MODAL POPUP
+   =============================== */
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 999;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.modal-box {
+    background: #ffffff;
+    max-width: 500px;
+    width: 90%;
+    border-radius: 14px;
+    padding: 30px 35px;
+    position: relative;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+    animation: modalScale 0.3s ease;
+}
+
+@keyframes modalScale {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.modal-box h2 {
+    margin-bottom: 12px;
+    color: #2b6cb0;
+}
+
+.modal-box p {
+    color: #333333;
+    line-height: 1.6;
+}
+
+.modal-close {
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: #999;
+}
+
+.modal-close:hover {
+    color: #000;
+}
+
+/*This is section of code is used to make thewebsite more dynamic by adding responsiveness*/
+/* ===============================
+   MOBILE RESPONSIVENESS FIXES
+   =============================== */
+
+/* -------- NAVBAR -------- */
+@media (max-width: 768px) {
+    .nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem;
+        gap: 10px;
+    }
+
+    .nav-links {
+        margin-left: 0;
+        gap: 1rem;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .nav-links a {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.95rem;
+    }
+}
+
+/* -------- HERO SECTION -------- */
+@media (max-width: 768px) {
+    .hero-section {
+        height: 70vh;
+        /* safer than 100vh on phones */
+    }
+
+    .hero-title {
+        font-size: 1.8rem;
+        line-height: 1.3;
+    }
+}
+
+/* -------- INTRO SECTION -------- */
+@media (max-width: 768px) {
+    .intro-section {
+        padding: 25px 20px;
+        gap: 25px;
+    }
+
+    .intro-section img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .intro-section p {
+        font-size: 0.95rem;
+    }
+}
+
+/* -------- QUICK ACCESS CARDS -------- */
+@media (max-width: 600px) {
+    .card {
+        max-width: 100%;
+    }
+
+    .card img {
+        height: 200px;
+    }
+}
+
+/* -------- SERVICES CAROUSEL -------- */
+@media (max-width: 768px) {
+    .services-card {
+        height: auto;
+        padding: 12px;
+    }
+
+    .story-text {
+        padding: 10px;
+    }
+
+    .ht-arrow {
+        width: 32px;
+        height: 32px;
+        font-size: 18px;
+    }
+}
+
+/* -------- FOOTER -------- */
+@media (max-width: 768px) {
+    .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        text-align: center;
+    }
+
+    .footer-brand {
+        border-left: none;
+        padding-left: 0;
+    }
+}
+
+/* -------- GENERAL TEXT SCALING -------- */
+@media (max-width: 480px) {
+    body {
+        font-size: 15px;
+    }
+
+    h1 {
+        font-size: 1.6rem;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+    }
+}
