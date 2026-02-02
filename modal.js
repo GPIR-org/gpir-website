@@ -14,17 +14,17 @@ document.addEventListener("DOMContentLoaded", () => {
         vision: {
             title: "Our Vision",
             content:
-                "To bring to fore issues affecting children and young people in communities around Zimbabwe and implementing both proactive and reactive solutions."
+                "Our vision is to bring to fore issues affecting young children and crafting reactive and proactive solution"
         },
         mission: {
             title: "Our Mission",
             content:
-                "To ensure all children and youth afford equal opportunites to reach their full potential by identifying their talents and nurturing them. To build resilient communities free from social woes of early childhood marriages, domestic violence and drug and substance abuse; we aim to build resilient communities through advocacy awerness,prevention and empowering programs. "
+                "We aim to make society a better living for all by alleviating discordant behavior in young people."
         },
         values: {
             title: "Our Values",
             content:
-                "Integrity, empathy, teamwork, transparency, accountability, professionalism, prayer and commitment to community development."
+                "Integrity, Empathy, Teamwork, Transparency, Accountability, Professionalism, Prayer."
         }
     };
 
